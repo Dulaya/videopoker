@@ -94,11 +94,26 @@
     <div id="handValue"></div>
 
     <div id="outputDiv">
-        <img src='https://onestopmath.com/algebra/Probablity/cards/back.jpg' />
-        <img src='https://onestopmath.com/algebra/Probablity/cards/back.jpg' />
-        <img src='https://onestopmath.com/algebra/Probablity/cards/back.jpg' />
-        <img src='https://onestopmath.com/algebra/Probablity/cards/back.jpg' />
-        <img src='https://onestopmath.com/algebra/Probablity/cards/back.jpg' />
+        <div id="cardCover">
+            <div id="cardOneHold"></div>
+            <img id="cardOne" src='cards/back.jpg' onclick=cardOneHold() />
+        </div>
+        <div id="cardCover">
+            <div id="cardTwoHold"></div>
+            <img id="cardTwo" src='cards/back.jpg' onclick=cardTwoHold() />
+        </div>
+        <div id="cardCover">
+            <div id="cardThreeHold"></div>
+            <img id="cardThree" src='cards/back.jpg' onclick=cardThreeHold() />
+        </div>
+        <div id="cardCover">
+            <div id="cardFourHold"></div>
+            <img id="cardFour" src='cards/back.jpg' onclick=cardFourHold() />
+        </div>
+        <div id="cardCover">
+            <div id="cardFiveHold"></div>
+            <img id="cardFive" src='cards/back.jpg' onclick=cardFiveHold() />
+        </div>
     </div>
 
     <script type="text/javascript" src="evaluate.js"></script>
@@ -113,5 +128,7 @@
         <button id="betSize" onclick=betSize()>BET ONE</button>
         <button id="dealButton" onclick=play()>DEAL</button>
     </div>
+
+    <div id="handString"></div>
 
 </body>

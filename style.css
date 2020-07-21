@@ -39,7 +39,23 @@ button:hover {
   font-family: 'Rowdies', cursive;
 }
 
-#outputDiv {}
+#handString {
+  font-size: 20px;
+  margin: 10px;
+  color: red;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: yellow;
+  font-family: 'Rowdies', cursive;
+}
+
+#outputDiv > div { 
+  display: inline-block; 
+  font-size: 20px;
+  color: red;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: yellow;
+  font-family: 'Rowdies', cursive;
+}
 
 img {
   width: 13vw;
@@ -47,6 +63,8 @@ img {
   border-radius: 8%;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
+
+img:hover {cursor: pointer;}
 
 table {
   width: 100%;
