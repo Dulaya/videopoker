@@ -1,0 +1,86 @@
+html,
+body {
+  margin: 0;
+  font-family: 'Varela Round', sans-serif;
+  background: blue;
+}
+
+body {
+  text-align: center;
+}
+
+button {
+  background: yellow;
+  font-size: 40px;
+  padding: 0 25px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke-color: white;
+  font-family: 'Rowdies', cursive;
+  cursor: pointer;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+button:hover {
+  background: #f3c623;
+}
+
+#payTableCover {
+  text-align: center;
+  padding: 10px 25px;
+}
+
+#handValue {
+  height: 50px;
+  font-size: 40px;
+  color: red;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: yellow;
+  font-family: 'Rowdies', cursive;
+}
+
+#outputDiv {}
+
+img {
+  width: 13vw;
+  margin: 10px;
+  border-radius: 8%;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+table {
+  width: 100%;
+  background: #0f4c75;
+  color: yellow;
+  border: 3px solid;
+  font-size: 25px;
+  text-align: center;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-fill-color: blue;
+  -webkit-text-stroke-color: white;
+  font-family: 'Rowdies', cursive;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+td {
+  padding: 0px 10px;
+}
+
+#creditRow {
+  font-size: 40px;
+  color: red;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: yellow;
+  font-family: 'Rowdies', cursive;
+}
+
+#credit,
+#betSizeOut {
+  display: inline-block;
+  margin: 0 50px 0 0;
+}
+
+#buttonsRow * {
+  display: inline-block;
+  ;
+}
