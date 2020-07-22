@@ -1,24 +1,83 @@
+//Set up column color
+for (element of document.getElementsByClassName("columnOne")) {
+    element.style.background = "#e71414";
+}
 
-//Only update the $ bet sizing whne the Bet button is clicked
+
+//Only update the $ bet sizing when the Bet button is clicked
 function betSize() {
-    var betSizing = document.getElementById("betSize").innerHTML; //Get word value of bet sizing from button innerHTML
+    if (document.getElementById("dealButton").innerHTML == "DEAL") {
+        var betSizing = document.getElementById("betSize").innerHTML; //Get word value of bet sizing from button innerHTML
 
-    //Object mapping increment when bet button is clicked
-    var betSizeObj = { "BET ONE": "BET TWO", "BET TWO": "BET THREE", "BET THREE": "BET FOUR", "BET FOUR": "BET FIVE", "BET FIVE": "BET ONE", };
+        //Object mapping increment when bet button is clicked
+        var betSizeObj = { "BET ONE": "BET TWO", "BET TWO": "BET THREE", "BET THREE": "BET FOUR", "BET FOUR": "BET FIVE", "BET FIVE": "BET ONE", };
 
-    //Update (increment) innerHTML of bet button according to key -> value above
-    document.getElementById("betSize").innerHTML = betSizeObj[betSizing];
+        //Update (increment) innerHTML of bet button according to key -> value above
+        document.getElementById("betSize").innerHTML = betSizeObj[betSizing];
 
-    var betUnit = 0.25; //Smallest betting unit
+        var betUnit = 0.25; //Smallest betting unit
 
-    var betSizeWord = document.getElementById("betSize").innerHTML; //Get word value of bet sizing from button innerHTML
+        var betSizeWord = document.getElementById("betSize").innerHTML; //Get word value of bet sizing from button innerHTML
 
-    //Object mapping bet sizing word to numerical value
-    var betSizeObj = { "BET ONE": betUnit * 1, "BET TWO": betUnit * 2, "BET THREE": betUnit * 3, "BET FOUR": betUnit * 4, "BET FIVE": betUnit * 5, }
+        //Object mapping bet sizing word to numerical value
+        var betSizeObj = { "BET ONE": betUnit * 1, "BET TWO": betUnit * 2, "BET THREE": betUnit * 3, "BET FOUR": betUnit * 4, "BET FIVE": betUnit * 5, }
 
-    var betSizeNum = betSizeObj[betSizeWord].toFixed(2); //Update bet sizing numerical value after bet button clicked
+        var betSizeNum = betSizeObj[betSizeWord].toFixed(2); //Update bet sizing numerical value after bet button clicked
 
-    document.getElementById("betSizeOut").innerHTML = betSizeNum; //Update DOM of above
+        document.getElementById("betSizeOut").innerHTML = betSizeNum; //Update DOM of above
+
+        //Clear column color
+        for (element of document.getElementsByClassName("columnOne")) {
+            element.style.background = "#0f4c75";
+        }
+
+        for (element of document.getElementsByClassName("columnTwo")) {
+            element.style.background = "#0f4c75";
+        }
+
+        for (element of document.getElementsByClassName("columnThree")) {
+            element.style.background = "#0f4c75";
+        }
+
+        for (element of document.getElementsByClassName("columnFour")) {
+            element.style.background = "#0f4c75";
+        }
+
+        for (element of document.getElementsByClassName("columnFive")) {
+            element.style.background = "#0f4c75";
+        }
+
+        //Apply column color on bet changing
+        for (element of document.getElementsByClassName("columnOne")) {
+            if (document.getElementById("betSize").innerHTML == "BET ONE") {
+                element.style.background = "#e71414"
+            }
+        }
+
+        for (element of document.getElementsByClassName("columnTwo")) {
+            if (document.getElementById("betSize").innerHTML == "BET TWO") {
+                element.style.background = "#e71414"
+            }
+        }
+
+        for (element of document.getElementsByClassName("columnThree")) {
+            if (document.getElementById("betSize").innerHTML == "BET THREE") {
+                element.style.background = "#e71414"
+            }
+        }
+
+        for (element of document.getElementsByClassName("columnFour")) {
+            if (document.getElementById("betSize").innerHTML == "BET FOUR") {
+                element.style.background = "#e71414"
+            }
+        }
+
+        for (element of document.getElementsByClassName("columnFive")) {
+            if (document.getElementById("betSize").innerHTML == "BET FIVE") {
+                element.style.background = "#e71414"
+            }
+        }
+    }
 }
 
 /*****************************************************************************/
@@ -29,6 +88,7 @@ function betSize() {
 
 
 function play() {
+
     var betUnit = 0.25; //Smallest betting unit
 
     var credit = Number(document.getElementById("credit").innerHTML); //Get credit on DOM
@@ -139,7 +199,7 @@ function play() {
         if (document.getElementById("cardFourHold").innerHTML != "HOLD") {
             document.getElementById("cardFour").src = obj[hand[3]];
         }
- 
+
         if (document.getElementById("cardFiveHold").innerHTML != "HOLD") {
             document.getElementById("cardFive").src = obj[hand[4]];
         }
@@ -166,34 +226,9 @@ function play() {
     //Only allow DEALing if credit is positive & deal button = DEAL
     if (document.getElementById("credit").innerHTML > 0 && document.getElementById("dealButton").innerHTML == "DEAL") {
 
-
-        /*************************************** Clear CSS ********************************/
-        var payTableBackgroundColor = "#0f4c75";
-        var madeHandBackgroundColor = "red";
-
-        document.getElementById("royalFlush").style.background = payTableBackgroundColor;
-        document.getElementById("straightFlush").style.background = payTableBackgroundColor;
-        document.getElementById("4Oak").style.background = payTableBackgroundColor;
-        document.getElementById("boat").style.background = payTableBackgroundColor;
-        document.getElementById("flush").style.background = payTableBackgroundColor;
-        document.getElementById("straight").style.background = payTableBackgroundColor;
-        document.getElementById("3Oak").style.background = payTableBackgroundColor;
-        document.getElementById("2Pairs").style.background = payTableBackgroundColor;
-        document.getElementById("jacksOrBetter").style.background = payTableBackgroundColor;
-        /**********************************************************************************/
+        currentHand = hand;
 
 
-        /******************* Apply CSS to Pay Table According to Made Hand ****************/
-        if (handValue == "Royal Flush") { document.getElementById("royalFlush").style.background = madeHandBackgroundColor; }
-        if (handValue == "Straight Flush") { document.getElementById("straightFlush").style.background = madeHandBackgroundColor; }
-        if (handValue == "Four of A Kind") { document.getElementById("4Oak").style.background = madeHandBackgroundColor; }
-        if (handValue == "Full House") { document.getElementById("boat").style.background = madeHandBackgroundColor; }
-        if (handValue == "Flush") { document.getElementById("flush").style.background = madeHandBackgroundColor; }
-        if (handValue == "Straight") { document.getElementById("straight").style.background = madeHandBackgroundColor; }
-        if (handValue == "3 of A Kind") { document.getElementById("3Oak").style.background = madeHandBackgroundColor; }
-        if (handValue == "Two Pairs") { document.getElementById("2Pairs").style.background = madeHandBackgroundColor; }
-        if (handValue == "Jacks or Better") { document.getElementById("jacksOrBetter").style.background = madeHandBackgroundColor; }
-        /**********************************************************************************/
 
 
         //Object mapping word keys bet size to numerical value
@@ -203,7 +238,7 @@ function play() {
 
         //var credit = Number(document.getElementById("credit").innerHTML); //Get credit on DOM
 
-        credit +=  0 - betSizeNum; //Update credit after hand is evaluated
+        credit += 0 - betSizeNum; //Update credit after hand is evaluated
 
         document.getElementById("credit").innerHTML = credit; //Update DOM with updated credit
 
@@ -293,6 +328,36 @@ function play() {
         /****************************************************************************************/
     }
 
+
+    /*************************************** Clear CSS ********************************/
+    var payTableBackgroundColor = "#0f4c75";
+    var madeHandBackgroundColor = "red";
+
+    document.getElementById("royalFlush").style.background = payTableBackgroundColor;
+    document.getElementById("straightFlush").style.background = payTableBackgroundColor;
+    document.getElementById("4Oak").style.background = payTableBackgroundColor;
+    document.getElementById("boat").style.background = payTableBackgroundColor;
+    document.getElementById("flush").style.background = payTableBackgroundColor;
+    document.getElementById("straight").style.background = payTableBackgroundColor;
+    document.getElementById("3Oak").style.background = payTableBackgroundColor;
+    document.getElementById("2Pairs").style.background = payTableBackgroundColor;
+    document.getElementById("jacksOrBetter").style.background = payTableBackgroundColor;
+    /**********************************************************************************/
+
+
+    /******************* Apply CSS to Pay Table According to Made Hand ****************/
+    if (handValue == "Royal Flush") { document.getElementById("royalFlush").style.background = madeHandBackgroundColor; }
+    if (handValue == "Straight Flush") { document.getElementById("straightFlush").style.background = madeHandBackgroundColor; }
+    if (handValue == "Four of A Kind") { document.getElementById("4Oak").style.background = madeHandBackgroundColor; }
+    if (handValue == "Full House") { document.getElementById("boat").style.background = madeHandBackgroundColor; }
+    if (handValue == "Flush") { document.getElementById("flush").style.background = madeHandBackgroundColor; }
+    if (handValue == "Straight") { document.getElementById("straight").style.background = madeHandBackgroundColor; }
+    if (handValue == "3 of A Kind") { document.getElementById("3Oak").style.background = madeHandBackgroundColor; }
+    if (handValue == "Two Pairs") { document.getElementById("2Pairs").style.background = madeHandBackgroundColor; }
+    if (handValue == "Jacks or Better") { document.getElementById("jacksOrBetter").style.background = madeHandBackgroundColor; }
+    /**********************************************************************************/
+
+
     //Toggle DEAL/DRAW button
     dealDraw();
 }
@@ -302,9 +367,13 @@ function cardOneHold() {
     if (document.getElementById("dealButton").innerHTML == "DRAW") {
         if (document.getElementById("cardOneHold").innerHTML == "") {
             document.getElementById("cardOneHold").innerHTML = "HOLD";
+            holdArray[0] = 1;
+            //console.log(holdArray)
         }
         else {
             document.getElementById("cardOneHold").innerHTML = "";
+            holdArray[0] = 0;
+            //console.log(holdArray)
         }
     }
 }
@@ -314,9 +383,11 @@ function cardTwoHold() {
     if (document.getElementById("dealButton").innerHTML == "DRAW") {
         if (document.getElementById("cardTwoHold").innerHTML == "") {
             document.getElementById("cardTwoHold").innerHTML = "HOLD";
+            holdArray[1] = 1;
         }
         else {
             document.getElementById("cardTwoHold").innerHTML = "";
+            holdArray[1] = 0;
         }
     }
 }
@@ -326,9 +397,11 @@ function cardThreeHold() {
     if (document.getElementById("dealButton").innerHTML == "DRAW") {
         if (document.getElementById("cardThreeHold").innerHTML == "") {
             document.getElementById("cardThreeHold").innerHTML = "HOLD";
+            holdArray[2] = 1;
         }
         else {
             document.getElementById("cardThreeHold").innerHTML = "";
+            holdArray[2] = 0;
         }
     }
 }
@@ -338,9 +411,11 @@ function cardFourHold() {
     if (document.getElementById("dealButton").innerHTML == "DRAW") {
         if (document.getElementById("cardFourHold").innerHTML == "") {
             document.getElementById("cardFourHold").innerHTML = "HOLD";
+            holdArray[3] = 1;
         }
         else {
             document.getElementById("cardFourHold").innerHTML = "";
+            holdArray[3] = 0;
         }
     }
 }
@@ -350,9 +425,11 @@ function cardFiveHold() {
     if (document.getElementById("dealButton").innerHTML == "DRAW") {
         if (document.getElementById("cardFiveHold").innerHTML == "") {
             document.getElementById("cardFiveHold").innerHTML = "HOLD";
+            holdArray[4] = 1;
         }
         else {
             document.getElementById("cardFiveHold").innerHTML = "";
+            holdArray[4] = 0;
         }
     }
 }

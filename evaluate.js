@@ -3,32 +3,70 @@
 //e.g.  [['Ks','Ac','5d','Kd','Ah'], "Two Pairs"]
 /**************************************************************************************************/
 
+var currentHand = ['', '', '', '', ''];
+var holdArray = [0, 0, 0, 0, 0];
 
 function generate() {
+
+    //console.log(currentHand)
 
     /****************************** Generate a random hand of 5 cards **********************************/
     //Standard deck of 52 cards in array
     var deck = ['Ac', 'Kc', 'Qc', 'Jc', 'Tc', '9c', '8c', '7c', '6c', '5c', '4c', '3c', '2c', 'Ad', 'Kd', 'Qd', 'Jd', 'Td', '9d', '8d', '7d', '6d', '5d', '4d', '3d', '2d', 'Ah', 'Kh', 'Qh', 'Jh', 'Th', '9h', '8h', '7h', '6h', '5h', '4h', '3h', '2h', 'As', 'Ks', 'Qs', 'Js', 'Ts', '9s', '8s', '7s', '6s', '5s', '4s', '3s', '2s'];
 
     var ranNumOne = Math.floor(Math.random() * deck.length); //random # between 0 -> 51 inclusive
-    var cardOne = deck[ranNumOne]; //First random card
-    deck.splice(ranNumOne, 1); //Remove deck[ranNumOne] from deck
+    if (currentHand[0] != "" && holdArray[0] == 1) { //
+        var cardOne = currentHand[0];
+        deck.splice(deck.indexOf(currentHand[0]), 1);
+        //console.log(deck)
+    }
+    else {
+        var cardOne = deck[ranNumOne]; //First random card
+        deck.splice(ranNumOne, 1); //Remove deck[ranNumOne] from deck
+    }
+    //console.log("cardOne =", cardOne)
+
 
     var ranNumTwo = Math.floor(Math.random() * deck.length); //random # between 0 -> 50 inclusive
-    var cardTwo = deck[ranNumTwo]; //Second random card
-    deck.splice(ranNumTwo, 1); //Remove deck[ranNumTwo] from deck
+    if (currentHand[1] != "" && holdArray[1] == 1) { //
+        var cardTwo = currentHand[1];
+        deck.splice(deck.indexOf(currentHand[1]), 1);
+    }
+    else {
+        var cardTwo = deck[ranNumTwo]; //Second random card
+        deck.splice(ranNumTwo, 1); //Remove deck[ranNumTwo] from deck
+    }
+    ////console.log("cardTwo =", cardTwo)
 
     var ranNumThree = Math.floor(Math.random() * deck.length); //random # between 0 -> 49 inclusive
-    var cardThree = deck[ranNumThree]; //Third random card
-    deck.splice(ranNumThree, 1); //Remove deck[ranNumThree] from deck
+    if (currentHand[2] != "" && holdArray[2] == 1) { //
+        var cardThree = currentHand[2];
+        deck.splice(deck.indexOf(currentHand[2]), 1);
+    }
+    else {
+        var cardThree = deck[ranNumThree]; //Third random card
+        deck.splice(ranNumThree, 1); //Remove deck[ranNumThree] from deck
+    }
 
     var ranNumFour = Math.floor(Math.random() * deck.length); //random # between 0 -> 48 inclusive
-    var cardFour = deck[ranNumFour]; //Fourth random card
-    deck.splice(ranNumFour, 1); //Remove deck[ranNranNumFourumOne] from deck
+    if (currentHand[3] != "" && holdArray[3] == 1) { //
+        var cardFour = currentHand[3];
+        deck.splice(deck.indexOf(currentHand[3]), 1);
+    }
+    else {
+        var cardFour = deck[ranNumFour]; //Fourth random card
+        deck.splice(ranNumFour, 1); //Remove deck[ranNranNumFourumOne] from deck
+    }
 
     var ranNumFive = Math.floor(Math.random() * deck.length); //random # between 0 -> 47 inclusive
-    var cardFive = deck[ranNumFive]; //Fifth random card
-    deck.splice(ranNumFive, 1); //Remove deck[ranNumFive] from deck
+    if (currentHand[4] != "" && holdArray[4] == 1) { //
+        var cardFive = currentHand[4];
+        deck.splice(deck.indexOf(currentHand[4]), 1);
+    }
+    else {
+        var cardFive = deck[ranNumFive]; //Fifth random card
+        deck.splice(ranNumFive, 1); //Remove deck[ranNumFive] from deck
+    }
 
     var hand = [cardOne, cardTwo, cardThree, cardFour, cardFive]; //Array containings 5 random cards, e.g. ['Ac','2s','Kh','Qh','2d']
 
@@ -48,6 +86,9 @@ function generate() {
 
     var handNoSuitArray = [cardOne[0], cardTwo[0], cardThree[0], cardFour[0], cardFive[0]]; //Array of cards in a hand without suits
     /**************************************************************************************************/
+
+    currentHand = ['', '', '', '', ''];
+    holdArray = [0, 0, 0, 0, 0]
 
     return [hand, handNoSuit, suits, handNoSuitArray];
 }
@@ -100,17 +141,17 @@ function evaluate() {
     /*********************************** Check for Straight Flush *************************************/
     //Check if sortedHandNoSuit is in straightsArray; if so, sortedHandNoSuit --> straight, else --> not straight
     if (straightsArray.includes(sortedHandNoSuit)) {
-        //console.log('STRAIGHT', sortedHandNoSuit);
+        ////console.log('STRAIGHT', sortedHandNoSuit);
         //document.getElementById("DIV").innerHTML += "STRAIGHT "+sortedHandNoSuit+"<br/>";
         if (suits[0] == suits[1] && suits[0] == suits[2] && suits[0] == suits[3] && suits[0] == suits[4]) {
-            //console.log(hand, "STRAIGHT FLUSH!!!"); 
+            ////console.log(hand, "STRAIGHT FLUSH!!!"); 
             if (sortedHandNoSuit[0] == "A" && sortedHandNoSuit[1] == "K") { handValue = "Royal Flush"; }
             else { handValue = "Straight Flush"; }
         }
         //IMPORTANT: 7.20.20 Removing checking for straight under flush,
         //because the if else won't continue to evaluate hand if straight is checked in straightflush
         else {
-            //console.log('STRAIGHT', sortedHandNoSuit);
+            ////console.log('STRAIGHT', sortedHandNoSuit);
             handValue = "Straight";
         }
     }
@@ -119,11 +160,11 @@ function evaluate() {
 
     /*********************************** Check for Quads and Boats *************************************/
     else if (cardCountArray[0] == 4) { //Check for Quads, e.g. [4] --> Quads
-        //console.log(hand, 'Quad');
+        ////console.log(hand, 'Quad');
         handValue = "Four of A Kind";
     }
     else if (cardCountArray[0] == 3 && cardCountArray[1] == 2 || cardCountArray[0] == 2 && cardCountArray[1] == 3) { //Check for Boat, e.g. [3,2] || [2,3] --> Boat
-        //console.log(hand, 'Boat');
+        ////console.log(hand, 'Boat');
         handValue = "Full House";
     }
     /***********************************************************************************************/
@@ -132,7 +173,7 @@ function evaluate() {
     /***************************** Check for Flush and Straight ************************************/
     //Check for flush. If all suits are same, then flush.
     else if (suits[0] == suits[1] && suits[0] == suits[2] && suits[0] == suits[3] && suits[0] == suits[4]) {
-        //console.log(hand, "FLUSH"); 
+        ////console.log(hand, "FLUSH"); 
         handValue = "Flush";
     }
 
@@ -141,7 +182,7 @@ function evaluate() {
     //it won't check for other type of hands.
     //Check if sortedHandNoSuit is in straightsArray; if so, sortedHandNoSuit --> straight, else --> not straight
     //else if (straightsArray.includes(sortedHandNoSuit)) {
-    //console.log('STRAIGHT', sortedHandNoSuit);
+    ////console.log('STRAIGHT', sortedHandNoSuit);
     //    handValue = "Straight" ;
     //}
     /***********************************************************************************************/
@@ -149,18 +190,18 @@ function evaluate() {
 
     /************** Check for 3OAK, 2 Pairs, Jacks or Better and High Cards *************************/
     else if (cardCountArray[0] == 3) { //Check for 3OAK, e.g. [3] --> 3OAK
-        //console.log('3OAK'); 
+        ////console.log('3OAK'); 
         handValue = "3 of A Kind";
     }
     else if (cardCountArray[0] == 2 && cardCountArray[1] == 2) { //Check for 2 Pairs, e.g. [2,2] --> 2Pairs
-        //console.log('2 Pairs'); 
+        ////console.log('2 Pairs'); 
         handValue = "Two Pairs";
     }
     else if (cardCountArray[0] == 2) { //Check for 1 Pair & Jacks or Better, e.g. [2] --> 1 Pair
-        //console.log('1 Pair',cardCountObj); 
+        ////console.log('1 Pair',cardCountObj); 
 
         if (cardGetJackorBetter["A"] == 2 || cardGetJackorBetter["K"] == 2 || cardGetJackorBetter["Q"] == 2 || cardGetJackorBetter["J"] == 2) {
-            //console.log(cardGetJackorBetter, "Jacks or Better!"); 
+            ////console.log(cardGetJackorBetter, "Jacks or Better!"); 
             handValue = "Jacks or Better";
         }
 
@@ -168,7 +209,7 @@ function evaluate() {
         else { handValue = "Weak Pair"; }
     }
     else {
-        //console.log("High Cards");
+        ////console.log("High Cards");
         handValue = "High Cards";
     }
     /***********************************************************************************************/
