@@ -1,5 +1,11 @@
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Video Poker Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap" rel="stylesheet">
+</head>
 
 <body>
     <div id="payTableCover">
@@ -95,23 +101,23 @@
 
     <div id="outputDiv">
         <div id="cardCover">
-            <div id="cardOneHold"></div>
+            <div id="cardOneHold" class="holdContainer"></div>
             <img id="cardOne" src='cards/back.jpg' onclick=cardOneHold() />
         </div>
         <div id="cardCover">
-            <div id="cardTwoHold"></div>
+            <div id="cardTwoHold" class="holdContainer"></div>
             <img id="cardTwo" src='cards/back.jpg' onclick=cardTwoHold() />
         </div>
         <div id="cardCover">
-            <div id="cardThreeHold"></div>
+            <div id="cardThreeHold" class="holdContainer"></div>
             <img id="cardThree" src='cards/back.jpg' onclick=cardThreeHold() />
         </div>
         <div id="cardCover">
-            <div id="cardFourHold"></div>
+            <div id="cardFourHold" class="holdContainer"></div>
             <img id="cardFour" src='cards/back.jpg' onclick=cardFourHold() />
         </div>
         <div id="cardCover">
-            <div id="cardFiveHold"></div>
+            <div id="cardFiveHold" class="holdContainer"></div>
             <img id="cardFive" src='cards/back.jpg' onclick=cardFiveHold() />
         </div>
     </div>
@@ -132,3 +138,5 @@
     <div id="handString"></div>
 
 </body>
+
+</html>

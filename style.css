@@ -57,6 +57,10 @@ button:hover {
   font-family: 'Rowdies', cursive;
 }
 
+.holdContainer {
+  height: 25px;
+}
+
 img {
   width: 13vw;
   margin: 10px;
