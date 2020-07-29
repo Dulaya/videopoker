@@ -9,10 +9,31 @@ var holdArray = [0, 0, 0, 0, 0];
 function generate() {
 
     //console.log(currentHand)
+    //console.log(holdArray)
+
+    //Construct array of the removed card
+    var removedCards = []
+    for (var cardCounter = 0; cardCounter < currentHand.length; cardCounter++){
+        if (holdArray[cardCounter] == 1) {
+            removedCards.push(currentHand[cardCounter])
+        }
+    }
+    //console.log(removedCards)
+
 
     /****************************** Generate a random hand of 5 cards **********************************/
     //Standard deck of 52 cards in array
     var deck = ['Ac', 'Kc', 'Qc', 'Jc', 'Tc', '9c', '8c', '7c', '6c', '5c', '4c', '3c', '2c', 'Ad', 'Kd', 'Qd', 'Jd', 'Td', '9d', '8d', '7d', '6d', '5d', '4d', '3d', '2d', 'Ah', 'Kh', 'Qh', 'Jh', 'Th', '9h', '8h', '7h', '6h', '5h', '4h', '3h', '2h', 'As', 'Ks', 'Qs', 'Js', 'Ts', '9s', '8s', '7s', '6s', '5s', '4s', '3s', '2s'];
+
+    //Removed the held cards from deck
+    for (card of deck){
+        if (removedCards.includes(card)){
+            //console.log(card)
+            deck.splice(deck.indexOf(card),1)
+        }
+    }
+
+    //console.log(deck)
 
     var ranNumOne = Math.floor(Math.random() * deck.length); //random # between 0 -> 51 inclusive
     if (currentHand[0] != "" && holdArray[0] == 1) { //
@@ -25,7 +46,8 @@ function generate() {
         deck.splice(ranNumOne, 1); //Remove deck[ranNumOne] from deck
     }
     //console.log("cardOne =", cardOne)
-
+    
+    //console.log(deck)
 
     var ranNumTwo = Math.floor(Math.random() * deck.length); //random # between 0 -> 50 inclusive
     if (currentHand[1] != "" && holdArray[1] == 1) { //
@@ -38,6 +60,8 @@ function generate() {
     }
     ////console.log("cardTwo =", cardTwo)
 
+    //console.log(deck)
+
     var ranNumThree = Math.floor(Math.random() * deck.length); //random # between 0 -> 49 inclusive
     if (currentHand[2] != "" && holdArray[2] == 1) { //
         var cardThree = currentHand[2];
@@ -47,6 +71,8 @@ function generate() {
         var cardThree = deck[ranNumThree]; //Third random card
         deck.splice(ranNumThree, 1); //Remove deck[ranNumThree] from deck
     }
+
+    //console.log(deck)
 
     var ranNumFour = Math.floor(Math.random() * deck.length); //random # between 0 -> 48 inclusive
     if (currentHand[3] != "" && holdArray[3] == 1) { //
@@ -58,6 +84,8 @@ function generate() {
         deck.splice(ranNumFour, 1); //Remove deck[ranNranNumFourumOne] from deck
     }
 
+    //console.log(deck)
+
     var ranNumFive = Math.floor(Math.random() * deck.length); //random # between 0 -> 47 inclusive
     if (currentHand[4] != "" && holdArray[4] == 1) { //
         var cardFive = currentHand[4];
@@ -67,6 +95,8 @@ function generate() {
         var cardFive = deck[ranNumFive]; //Fifth random card
         deck.splice(ranNumFive, 1); //Remove deck[ranNumFive] from deck
     }
+
+    //console.log(deck)
 
     var hand = [cardOne, cardTwo, cardThree, cardFour, cardFive]; //Array containings 5 random cards, e.g. ['Ac','2s','Kh','Qh','2d']
 
